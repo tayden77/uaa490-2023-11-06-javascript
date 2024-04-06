@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Colors</title>
         <script>
             document.addEventListener('DOMContentLoaded', () =>{
@@ -9,11 +11,28 @@
                     function() {
                         document.querySelector('#banner').style.color = this.value;
                     }
+                
+                document.querySelector('#color-selector').onclick = 
+                    function rename() {
+                        const header = document.querySelector('#banner');
+                        const button = document.querySelector('button');
+                        if (header.innerHTML === "Hello World!") {
+                            if (button === 'Red') {
+                                header.innerHTML = 'Red'
+                            }
+                            else if (button === 'Green') {
+                                header.innerHTML = 'Green'
+                            }
+                            else if (button === 'Blue')
+                                header.innerHTML = 'Blue'
+                        }
+                    }
 
 
                 document.querySelectorAll('.color-changer').forEach(button => {
                     button.onmouseover = function() {
                         document.querySelector('#banner').style.color = button.dataset.color;
+                        document.querySelector('#banner').style.value = 'red';
                     };
                 });
             })
@@ -22,14 +41,14 @@
     </head>
     <body>
         <h1 id="banner">Hello World!</h1>
-        <select id="color-selector">
+        <select title="h1" id="color-selector">
             <option value="red">Red</option>
             <option value="blue">Blue</option>
             <option value="green">Green</option>
             <option value="black">Black</option>
         </select>
-        <button class="color-changer" data-color="red">Red</button>
-        <button class="color-changer" data-color="green">Green</button>
-        <button class="color-changer" data-color="blue">Blue</button>
+            <button id="red" onclick="rename()" class="color-changer" data-color="red">Red</button>
+            <button id="green" onclick="rename()" class="color-changer" data-color="green">Green</button>
+            <button id="blue" onclick="rename()" class="color-changer" data-color="blue">Blue</button>
     </body>
 </html>
